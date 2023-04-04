@@ -3,7 +3,7 @@ const redirectUri = "http://localhost:3000";
 const clientId = "1a201b767edb0163c163";
 const state = "12321";
 const apiBaseUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&state=${state}&scope=${scope}`;
-
+const client_secret = 'a2fbe993ad66033ab7905453d4d5aa44e0ab0dab';
 
 const response = await fetch(accessTokenUrl, {
   method: "POST",
