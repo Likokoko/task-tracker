@@ -3,9 +3,7 @@ const redirectUri = "http://localhost:3000";
 const clientId = "1a201b767edb0163c163";
 const state = "12321";
 const apiBaseUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&state=${state}&scope=${scope}`;
-// const accessTokenUrl = "https://github.com/login/oauth/access_token";
 
-// const code = 
 
 const response = await fetch(accessTokenUrl, {
   method: "POST",
@@ -22,13 +20,7 @@ const response = await fetch(accessTokenUrl, {
   })
 });
 
-const data = await response.json();
 
-if (data.access_token) {
-  // store the access token securely in your application and use it to make API requests
-} else {
-  // handle the error case
-}
 
 async function fetchTasks() {
   const response = await fetch(`${apiBaseUrl}/tasks`);
