@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useNavigation, useParams } from "react-router-dom";
-import { fetchTask, updateTask, deleteTask } from "./api";
+import React, { useEffect, useState } from "react";
+import { deleteTask, fetchTask, updateTask } from "./api";
+
+import { getToken } from "../utils/token";
+import { useParams } from "react-router-dom";
 
 function TaskDetail() {
   const [title, setTitle] = useState("");
@@ -10,7 +12,11 @@ function TaskDetail() {
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const { id } = useParams();
-  const navigation = useNavigation();
+  console.log("my token in detail: ", getToken());
+
+  // const navigation = useNavigation();
+
+  // stack trace => queue
 
   useEffect(() => {
     async function fetchData() {
@@ -27,13 +33,13 @@ function TaskDetail() {
   async function handleSubmit(event) {
     event.preventDefault();
     await updateTask(id, { title, description, status });
-    navigation.navigate("/tasks");
+    // navigation.navigate("/tasks");
   }
 
   async function handleDelete() {
     setIsDeleting(true);
     await deleteTask(id);
-    navigation.navigate("/tasks");
+    // navigation.navigate("/tasks");
   }
 
   return (

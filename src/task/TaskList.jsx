@@ -1,17 +1,20 @@
-import { useState, useEffect } from "react";
-import { Container, Row, Col, Table, Form } from "react-bootstrap";
+import { Col, Container, Form, Row, Table } from "react-bootstrap";
+import { useEffect, useState } from "react";
+
 import { Octokit } from "@octokit/core";
-import { useAuth } from "../contexts/AuthContext";
+import { getToken } from "../utils/token";
+
+// import { useAuth } from "../contexts/AuthContext";
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
   const [sort, setSort] = useState("newest");
-  const { accessToken } = useAuth();
+  // const { accessToken } = useAuth();
 
   useEffect(() => {
-    const octokit = new Octokit({ auth: accessToken });
+    const octokit = new Octokit({ auth: getToken() });
 
     async function fetchIssues() {
       setLoading(true);
@@ -32,7 +35,7 @@ function TaskList() {
     }
 
     fetchIssues();
-  }, [accessToken, filter, sort]);
+  }, [filter, sort]);
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
