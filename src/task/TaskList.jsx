@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Octokit } from "@octokit/core";
 import { getToken } from "../utils/token";
 
-// import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
