@@ -58,8 +58,6 @@ function Login() {
     const q = parser.queryParams;
     if (q.code) {
       getToken(q.code);
-      // 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 -> me(user)
-      // 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
     } else {
       console.log("no code...");
     }
