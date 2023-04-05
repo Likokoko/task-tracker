@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getToken, setToken } from "../utils/token";
-import { useNavigation } from "react-router-dom";
+
 import { Button } from "react-bootstrap";
 import { UrlParser } from "url-params-parser";
+import { useAuth } from "./useAuth";
+
+// import { useNavigation } from "react-router-dom";
 const {
   REACT_APP_PROXY_URL,
   REACT_APP_CLIENT_ID,
@@ -13,7 +16,7 @@ const {
 } = process.env;
 
 function Login() {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   const { login } = useAuth();
   const [loading, setLoading] = useState(false);
   console.log("my token: ", getToken());
@@ -63,7 +66,7 @@ function Login() {
     setLoading(true);
     try {
       await login();
-      navigation.navigate("/tasks");
+      // navigation.navigate("/tasks");
     } catch (err) {
       console.error(err);
     } finally {
