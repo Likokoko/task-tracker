@@ -47,7 +47,7 @@ function TaskDetail() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className="Form">
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>
             <Form.Control
@@ -58,7 +58,7 @@ function TaskDetail() {
             />
           </Form.Group>
 
-          <Form.Group controlId="description">
+          <Form.Group controlId="description" className="descrption">
             <Form.Label>Description</Form.Label>
             <Form.Control
               as="textarea"
@@ -68,7 +68,7 @@ function TaskDetail() {
             />
           </Form.Group>
 
-          <Form.Group controlId="status">
+          <Form.Group controlId="status" className="status">
             <Form.Label>Status</Form.Label>
             <Form.Control
               as="select"
@@ -81,7 +81,7 @@ function TaskDetail() {
             </Form.Control>
           </Form.Group>
 
-          <Button variant="primary" type="submit" disabled={isLoading}>
+          <Button className="cla"variant="primary" type="submit" disabled={isLoading}>
             Update
           </Button>
           <Button variant="danger" onClick={handleDelete} disabled={isDeleting}>

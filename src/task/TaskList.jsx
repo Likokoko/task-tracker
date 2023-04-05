@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 import { Octokit } from "@octokit/core";
 import { getToken } from "../utils/token";
-
 import { useAuth } from "../contexts/AuthContext";
 
 function TaskList() {
@@ -49,8 +48,8 @@ function TaskList() {
     <Container>
       <Row className="mb-4">
         <Col>
-          <Form.Group controlId="filter">
-            <Form.Label>Filter by:</Form.Label>
+          <Form.Group className="FormGroup" controlId="filter">
+            <Form.Label className="FormLabel">Filter by:</Form.Label>
             <Form.Control
               as="select"
               value={filter}
@@ -72,7 +71,7 @@ function TaskList() {
           </Form.Group>
         </Col>
       </Row>
-      <Table striped bordered hover>
+      <Table striped bordered hover className="table">
         <thead>
           <tr>
             <th>#</th>

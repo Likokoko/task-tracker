@@ -9,11 +9,13 @@ import { useAuth } from "./useAuth";
 const {
   REACT_APP_PROXY_URL,
   REACT_APP_CLIENT_ID,
-  REACT_APP_REDIRECT_URI,
   REACT_APP_CLIENT_SECRET,
+  REACT_APP_REDIRECT_URI,
   REACT_APP_TOKEN_URL,
   REACT_APP_AUTH_URL,
 } = process.env;
+
+// node environment
 
 function Login() {
   // const navigation = useNavigation();
@@ -31,7 +33,7 @@ function Login() {
        * 8080 response -> 3000
        */
       return fetch(
-        `${REACT_APP_PROXY_URL}/${REACT_APP_TOKEN_URL}?client_id=${REACT_APP_CLIENT_ID}&client_secret=${REACT_APP_CLIENT_SECRET}&redirect_uri=${REACT_APP_REDIRECT_URI}&code=${code}`,
+        `${REACT_APP_PROXY_URL}${REACT_APP_TOKEN_URL}?client_id=${REACT_APP_CLIENT_ID}&client_secret=${REACT_APP_CLIENT_SECRET}&redirect_uri=${REACT_APP_REDIRECT_URI}&code=${code}`,
         {
           method: "POST",
           headers: {
@@ -57,6 +59,7 @@ function Login() {
     if (q.code) {
       getToken(q.code);
       // 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 -> me(user)
+      // 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
     } else {
       console.log("no code...");
     }

@@ -19,11 +19,14 @@ function TaskSearch() {
   return (
     <div>
       <input
+        className="SearchInput"
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch} className="searchBtn">
+        Search
+      </button>
       <ul>
         {searchResults.map((task) => (
           <li key={task.id}>{task.title}</li>
