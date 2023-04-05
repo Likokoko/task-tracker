@@ -67,7 +67,6 @@ function Login() {
     setLoading(true);
     try {
       await login();
-      // navigation.navigate("/tasks");
     } catch (err) {
       console.error(err);
     } finally {
@@ -76,7 +75,11 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
+    <div
+      className="login-container"
+      data-aos="fade-up"
+      data-aos-anchor-placement="top-center"
+    >
       <a
         href={`${REACT_APP_AUTH_URL}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URI}&login=Likokoko&scope=repo&allow_signup=false`}
       >

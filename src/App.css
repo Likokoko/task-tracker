@@ -1,3 +1,9 @@
+*{
+  box-sizing: border-box;
+  padding:0px;
+  margin:0px;
+  font-family: "Libre Baskerville", serif;
+}
 .App {
   text-align: center;
 }
@@ -6,7 +12,20 @@
   height: 40vmin;
   pointer-events: none;
 }
+.login-container {
+  display: flex;
+  width: 100%;
+  height: 700px;
+  align-items: center;
+  justify-content: center;
+}
 
+a {
+  color: rgb(215, 173, 122);
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 600;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -28,7 +28,7 @@ function TaskSearch() {
         Search
       </button>
       <ul>
-        {searchResults.map((task) => (
+        {searchResults.slice(0, 10).map((task) => (
           <li key={task.id}>{task.title}</li>
         ))}
       </ul>
