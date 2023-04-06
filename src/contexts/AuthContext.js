@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 
 const defaultValue = {
-  token: "this is the token in context",
+  token: undefined,
   setToken: () => {},
 };
 
@@ -17,7 +17,7 @@ export const AuthContextProvider = ({ children }) => {
         setToken,
       }}
     >
-      {children}
+      { children /** rerender */ }
     </AuthContext.Provider>
   );
 };

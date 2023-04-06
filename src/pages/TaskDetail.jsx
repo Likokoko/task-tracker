@@ -1,6 +1,6 @@
 import { Button, Form } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
-import { deleteTask, fetchTask, updateTask } from "./api";
+import { deleteTask, fetchTask, updateTask } from "../task/api";
 
 import { getToken } from "../utils/token";
 import { useParams } from "react-router-dom";

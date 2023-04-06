@@ -83,7 +83,6 @@ function TaskList() {
         <tbody>
           {loading ? (
             <tr>
-              <td colSpan="4">Loading...</td>
             </tr>
           ) : (
             tasks.map((task) => (

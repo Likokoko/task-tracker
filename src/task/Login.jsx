@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getToken, setToken } from "../utils/token";
+import React, { useContext, useEffect, useState } from "react";
 
-import { Button } from "react-bootstrap";
+import { AuthContext } from "../contexts/AuthContext";
 import { UrlParser } from "url-params-parser";
 import { useAuth } from "./useAuth";
+import { useNavigate } from "react-router-dom";
+
+// import { getToken, setToken } from "../utils/token";
 
 // import { useNavigation } from "react-router-dom";
 const {
@@ -17,11 +19,13 @@ const {
 
 // node environment
 
-function Login() {
+function Login() { // = localhost:3000/ = Login
   // const navigation = useNavigation();
   const { login } = useAuth();
+  // const [isAuthorize, setIsAuthorize] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log("my token: ", getToken());
+  const { setToken, token } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   /**
    * browser request ->
@@ -32,12 +36,16 @@ function Login() {
    */
 
   useEffect(() => {
+    if(token) return navigate("/tasks");
+  }, [token]);
+
+  useEffect(() => {
     const getToken = async (code) => {
-        console.log(
-          `${REACT_APP_PROXY_URL}${REACT_APP_TOKEN_URL}?client_id=${REACT_APP_CLIENT_ID}&client_secret=${REACT_APP_CLIENT_SECRET}&redirect_uri=${REACT_APP_REDIRECT_URI}&code=${code}`
-        );
+      console.log(
+        `${REACT_APP_PROXY_URL}${REACT_APP_TOKEN_URL}?client_id=${REACT_APP_CLIENT_ID}&client_secret=${REACT_APP_CLIENT_SECRET}&redirect_uri=${REACT_APP_REDIRECT_URI}&code=${code}`
+      );
       return fetch(
-       `${REACT_APP_PROXY_URL}${REACT_APP_TOKEN_URL}?client_id=${REACT_APP_CLIENT_ID}&client_secret=${REACT_APP_CLIENT_SECRET}&redirect_uri=${REACT_APP_REDIRECT_URI}&code=${code}`,
+        `${REACT_APP_PROXY_URL}${REACT_APP_TOKEN_URL}?client_id=${REACT_APP_CLIENT_ID}&client_secret=${REACT_APP_CLIENT_SECRET}&redirect_uri=${REACT_APP_REDIRECT_URI}&code=${code}`,
         {
           method: "POST",
           headers: {
@@ -47,7 +55,9 @@ function Login() {
       )
         .then((res) => res.json())
         .then((res) => {
-          if (res.access_token) setToken(res.access_token);
+          if (res.access_token) {
+            return setToken(res.access_token);
+          }
           throw new Error();
         })
         .catch((error) => {
@@ -72,6 +82,7 @@ function Login() {
   //if login clicked, request made and waiting for a response
   const handleLogin = async () => {
     setLoading(true);
+    // setIsAuthorize(true);
     try {
       await login(); // initiate the authentication with github
     } catch (err) {
@@ -87,7 +98,8 @@ function Login() {
       data-aos="fade-up"
       data-aos-anchor-placement="top-center"
     >
-      <a onClick={handleLogin}
+      <a
+        onClick={handleLogin}
         href={`${REACT_APP_AUTH_URL}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URI}&login=Likokoko&scope=repo&allow_signup=false`}
       >
         Login with GitHub
