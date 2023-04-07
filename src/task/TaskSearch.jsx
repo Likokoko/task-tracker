@@ -17,16 +17,20 @@ function TaskSearch() {
   };
 
   return (
-    <div>
-      <input
-        className="SearchInput"
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <button onClick={handleSearch} className="searchBtn">
-        Search
-      </button>
+    <div className="search">
+      <div className="searchArea">
+        <h3 className="searchTitle">Look for something?</h3>
+        <input
+          className="SearchInput"
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button onClick={handleSearch} className="button-13">
+          Search
+        </button>
+      </div>
+
       <ul>
         {searchResults.slice(0, 10).map((task) => (
           <li key={task.id}>{task.title}</li>

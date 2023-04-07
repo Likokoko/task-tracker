@@ -20,7 +20,7 @@ function TaskList() {
 
       try {
         const response = await octokit.request("GET /user/issues", {
-          filter: filter,
+          filter: "all",
           state: "all",
           sort: sort === "newest" ? "created" : "created-desc",
           per_page: 10,
@@ -62,7 +62,7 @@ function TaskList() {
           </Form.Group>
         </Col>
         <Col>
-          <Form.Group controlId="sort">
+          <Form.Group className="sort" controlId="sort">
             <Form.Label>Sort by:</Form.Label>
             <Form.Control as="select" value={sort} onChange={handleSortChange}>
               <option value="newest">Newest</option>

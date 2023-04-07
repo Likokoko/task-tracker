@@ -1,7 +1,7 @@
-*{
+* {
   box-sizing: border-box;
-  padding:0px;
-  margin:0px;
+  padding: 0px;
+  margin: 0px;
   font-family: "Libre Baskerville", serif;
 }
 .App {
@@ -20,11 +20,112 @@
   justify-content: center;
 }
 
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-gap: 1rem;
+  justify-items: center;
+  height: 100vh;
+  align-content: center;
+  background: rgb(248, 236, 216);
+  margin: 50px;
+}
+
+.table {
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
 a {
   color: rgb(215, 173, 122);
   text-decoration: none;
   font-size: 2rem;
   font-weight: 600;
+}
+
+.search {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+  background-color: beige;
+  color: rgb(88, 61, 25);
+}
+.searchTitle {
+  margin: 10px;
+}
+.mb-4 {
+  margin: 20px;
+}
+
+.FormGroup {
+  margin: 10px;
+}
+
+.from-control {
+  margin-left: 10px;
+}
+
+.sort {
+  margin: 10px;
+  margin-left: 15px;
+}
+
+ul {
+  position: relative;
+  left: 10%;
+  line-height: 1.5;
+  padding: 5rem;
+}
+
+.button-13 {
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember", sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 100px;
+  margin-left: 10px;
+}
+
+.button-13:hover {
+  background-color: #f7fafa;
+}
+
+.button-13:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+  outline: 0;
+}
+
+input {
+  height: 2rem;
+  border-color: darkgray;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
