@@ -1,4 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+
+import { setToken as setLocalToken } from "../utils/token";
 
 const defaultValue = {
   token: undefined,
@@ -10,6 +12,8 @@ export const AuthContext = createContext(defaultValue);
 export const AuthContextProvider = ({ children }) => {
   const [token, setToken] = useState(defaultValue.token);
 
+  useEffect(() => setLocalToken(token), [token]);
+
   return (
     <AuthContext.Provider
       value={{
@@ -17,7 +21,7 @@ export const AuthContextProvider = ({ children }) => {
         setToken,
       }}
     >
-      { children /** rerender */ }
+      {children /** rerender */}
     </AuthContext.Provider>
   );
 };

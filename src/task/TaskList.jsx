@@ -1,31 +1,37 @@
 import { Col, Container, Form, Row, Table } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
+// import { getToken } from "../utils/token";
+import { AuthContext } from "../contexts/AuthContext";
 import { Octokit } from "@octokit/core";
-import { getToken } from "../utils/token";
-import { useAuth } from "../contexts/AuthContext";
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
   const [sort, setSort] = useState("newest");
+  const {token} = useContext(AuthContext);
   // const { accessToken } = useAuth();
 
   useEffect(() => {
-    const octokit = new Octokit({ auth: getToken() });
+    // console.log("token=", getToken());
+    const octokit = new Octokit({
+      auth: token,
+    });
 
     async function fetchIssues() {
       setLoading(true);
 
       try {
         const response = await octokit.request("GET /user/issues", {
-          filter: "all",
+          headers: {
+            "X-GitHub-Api-Version": "2022-11-28",
+          },
+          filter: filter,
           state: "all",
           sort: sort === "newest" ? "created" : "created-desc",
           per_page: 10,
         });
-
         setTasks(response.data);
         setLoading(false);
       } catch (error) {
@@ -82,8 +88,7 @@ function TaskList() {
         </thead>
         <tbody>
           {loading ? (
-            <tr>
-            </tr>
+            <tr></tr>
           ) : (
             tasks.map((task) => (
               <tr key={task.id}>
