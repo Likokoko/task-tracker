@@ -1,3 +1,4 @@
+
 ## How to start:
 - In this repo
     - Create an `.env` file with following variables:
@@ -13,3 +14,7 @@
     - Clone https://github.com/Rob--W/cors-anywhere
     - `npm install`
     - `node server.js` (The proxy server will start on localhost:8080)
+
+
+https://user-images.githubusercontent.com/109224312/231348679-c3d72d6e-7270-4858-a166-d5efe81b9109.MP4
+
